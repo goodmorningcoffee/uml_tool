@@ -1,0 +1,256 @@
+{
+  "diagram_schema": "uml_tool_diagram_v1",
+  "id": "user_onboarding_flow",
+  "title": "User Onboarding Flow",
+  "description": "Example flowchart: a sign-up process with decision branches.",
+  "canvas": {
+    "grid_size": 20
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "name": "Sign Up",
+      "notes": "The user clicks Sign Up to begin.",
+      "shape": "rounded_rectangle",
+      "position": {
+        "x": 80,
+        "y": 250
+      },
+      "size": {
+        "width": 180,
+        "height": 86
+      },
+      "style": {
+        "fill": "#dcfce7",
+        "stroke": "#166534",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "enter",
+      "name": "Enter Email + Password",
+      "notes": "Collect credentials from the user.",
+      "shape": "rectangle",
+      "position": {
+        "x": 320,
+        "y": 250
+      },
+      "size": {
+        "width": 200,
+        "height": 86
+      },
+      "style": {
+        "fill": "#e0f2fe",
+        "stroke": "#075985",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "valid",
+      "name": "Email Valid?",
+      "notes": "Decision: is the email format acceptable and not already taken?",
+      "shape": "diamond",
+      "position": {
+        "x": 580,
+        "y": 240
+      },
+      "size": {
+        "width": 190,
+        "height": 120
+      },
+      "style": {
+        "fill": "#fef3c7",
+        "stroke": "#92400e",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "send_verify",
+      "name": "Send Verification Email",
+      "notes": "Email a one-time verification link.",
+      "shape": "rectangle",
+      "position": {
+        "x": 840,
+        "y": 120
+      },
+      "size": {
+        "width": 210,
+        "height": 86
+      },
+      "style": {
+        "fill": "#e0f2fe",
+        "stroke": "#075985",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "show_error",
+      "name": "Show Error",
+      "notes": "Display an inline error and let the user try again.",
+      "shape": "note",
+      "position": {
+        "x": 580,
+        "y": 430
+      },
+      "size": {
+        "width": 200,
+        "height": 100
+      },
+      "style": {
+        "fill": "#fee2e2",
+        "stroke": "#991b1b",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "verified",
+      "name": "Verified In Time?",
+      "notes": "Decision: did the user click the link before it expired?",
+      "shape": "diamond",
+      "position": {
+        "x": 1110,
+        "y": 110
+      },
+      "size": {
+        "width": 190,
+        "height": 120
+      },
+      "style": {
+        "fill": "#fef3c7",
+        "stroke": "#92400e",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "create_account",
+      "name": "Create Account",
+      "notes": "Persist the account and starter profile.",
+      "shape": "rectangle",
+      "position": {
+        "x": 1110,
+        "y": 300
+      },
+      "size": {
+        "width": 200,
+        "height": 86
+      },
+      "style": {
+        "fill": "#dcfce7",
+        "stroke": "#166534",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "welcome",
+      "name": "Welcome Screen",
+      "notes": "Send the user into the product for the first time.",
+      "shape": "rounded_rectangle",
+      "position": {
+        "x": 1370,
+        "y": 300
+      },
+      "size": {
+        "width": 200,
+        "height": 90
+      },
+      "style": {
+        "fill": "#cffafe",
+        "stroke": "#0e7490",
+        "text": "#17202a"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "start_to_enter",
+      "source": "start",
+      "target": "enter",
+      "name": "",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "enter_to_valid",
+      "source": "enter",
+      "target": "valid",
+      "name": "",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "valid_to_send",
+      "source": "valid",
+      "target": "send_verify",
+      "name": "yes",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "valid_to_error",
+      "source": "valid",
+      "target": "show_error",
+      "name": "no",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "send_to_verified",
+      "source": "send_verify",
+      "target": "verified",
+      "name": "",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "verified_to_create",
+      "source": "verified",
+      "target": "create_account",
+      "name": "yes",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "verified_to_error",
+      "source": "verified",
+      "target": "show_error",
+      "name": "no / expired",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "create_to_welcome",
+      "source": "create_account",
+      "target": "welcome",
+      "name": "",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    }
+  ],
+  "meta_links": [],
+  "created_at": "2026-06-06T20:25:33.750Z",
+  "updated_at": "2026-06-06T20:25:33.750Z"
+}

@@ -1,0 +1,232 @@
+{
+  "diagram_schema": "uml_tool_diagram_v1",
+  "id": "uml_tool_overview",
+  "title": "UML Tool — How It Works",
+  "description": "How this tool stores diagrams and lets a human and an AI agent edit the same chart together.",
+  "canvas": {
+    "grid_size": 20
+  },
+  "nodes": [
+    {
+      "id": "browser_gui",
+      "name": "Browser GUI",
+      "notes": "React Flow canvas: drag nodes, draw edges, snap to grid, and edit names and [[node_notes]] in the inspector.",
+      "shape": "rounded_rectangle",
+      "position": {
+        "x": 90,
+        "y": 200
+      },
+      "size": {
+        "width": 220,
+        "height": 95
+      },
+      "style": {
+        "fill": "#e0f2fe",
+        "stroke": "#075985",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "node_notes",
+      "name": "Node Notes",
+      "notes": "Details live in notes, not crammed into the shape. Notes can reference other nodes with [[meta_links]].",
+      "shape": "note",
+      "position": {
+        "x": 90,
+        "y": 400
+      },
+      "size": {
+        "width": 220,
+        "height": 115
+      },
+      "style": {
+        "fill": "#fef3c7",
+        "stroke": "#92400e",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "express_api",
+      "name": "Express API",
+      "notes": "Filesystem CRUD for diagrams plus SVG export. The diagram JSON is the source of truth.",
+      "shape": "rectangle",
+      "position": {
+        "x": 440,
+        "y": 200
+      },
+      "size": {
+        "width": 220,
+        "height": 95
+      },
+      "style": {
+        "fill": "#dcfce7",
+        "stroke": "#166534",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "diagram_json",
+      "name": "Diagram JSON",
+      "notes": "Agent-readable: nodes, positions, shapes, notes, visible edges, and meta_links.",
+      "shape": "rounded_rectangle",
+      "position": {
+        "x": 780,
+        "y": 110
+      },
+      "size": {
+        "width": 230,
+        "height": 100
+      },
+      "style": {
+        "fill": "#cffafe",
+        "stroke": "#0e7490",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "live_bridge",
+      "name": "Live Bridge (SSE)",
+      "notes": "Server-Sent Events push agent edits to the open browser, so you watch changes land in real time.",
+      "shape": "ellipse",
+      "position": {
+        "x": 780,
+        "y": 330
+      },
+      "size": {
+        "width": 220,
+        "height": 110
+      },
+      "style": {
+        "fill": "#ede9fe",
+        "stroke": "#6d28d9",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "ai_agent",
+      "name": "AI Agent",
+      "notes": "An AI coding agent (Claude, Codex, etc.) running in your repo reads the current chart and applies structured edits through the agent API.",
+      "shape": "ellipse",
+      "position": {
+        "x": 1120,
+        "y": 210
+      },
+      "size": {
+        "width": 230,
+        "height": 110
+      },
+      "style": {
+        "fill": "#fee2e2",
+        "stroke": "#991b1b",
+        "text": "#17202a"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "gui_to_api",
+      "source": "browser_gui",
+      "target": "express_api",
+      "name": "save / load",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "notes_to_json",
+      "source": "node_notes",
+      "target": "diagram_json",
+      "name": "meta layer",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "api_to_json",
+      "source": "express_api",
+      "target": "diagram_json",
+      "name": "write source",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "json_to_agent",
+      "source": "diagram_json",
+      "target": "ai_agent",
+      "name": "inspect",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "agent_to_api",
+      "source": "ai_agent",
+      "target": "express_api",
+      "name": "structured edits",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "api_to_bridge",
+      "source": "express_api",
+      "target": "live_bridge",
+      "name": "broadcast",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "bridge_to_gui",
+      "source": "live_bridge",
+      "target": "browser_gui",
+      "name": "live refresh",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    }
+  ],
+  "meta_links": [
+    {
+      "source_node_id": "browser_gui",
+      "source_edge_id": null,
+      "target_node_id": "node_notes",
+      "matched_text": "node_notes",
+      "source_field": "notes",
+      "link_type": "explicit"
+    },
+    {
+      "source_node_id": "browser_gui",
+      "source_edge_id": null,
+      "target_node_id": "node_notes",
+      "matched_text": "node_notes",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "express_api",
+      "source_edge_id": null,
+      "target_node_id": "diagram_json",
+      "matched_text": "diagram JSON",
+      "source_field": "notes",
+      "link_type": "auto"
+    }
+  ],
+  "created_at": "2026-06-06T20:25:33.762Z",
+  "updated_at": "2026-06-06T20:25:33.762Z"
+}

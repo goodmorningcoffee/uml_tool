@@ -1,0 +1,288 @@
+{
+  "diagram_schema": "uml_tool_diagram_v1",
+  "id": "web_app_architecture",
+  "title": "Web App Architecture",
+  "description": "Example system map: how a typical web application's pieces fit together.",
+  "canvas": {
+    "grid_size": 20
+  },
+  "nodes": [
+    {
+      "id": "browser",
+      "name": "Browser / Client",
+      "notes": "Single-page app. Renders the UI and calls the [[api]] over HTTPS.",
+      "shape": "rounded_rectangle",
+      "position": {
+        "x": 80,
+        "y": 240
+      },
+      "size": {
+        "width": 190,
+        "height": 90
+      },
+      "style": {
+        "fill": "#e0f2fe",
+        "stroke": "#075985",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "cdn",
+      "name": "CDN / Static Host",
+      "notes": "Serves the built frontend assets: HTML, JS, CSS, images.",
+      "shape": "rectangle",
+      "position": {
+        "x": 360,
+        "y": 80
+      },
+      "size": {
+        "width": 200,
+        "height": 86
+      },
+      "style": {
+        "fill": "#f1f5f9",
+        "stroke": "#334155",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "api",
+      "name": "API Server",
+      "notes": "Business logic and request validation. Talks to the database, cache, and auth service.",
+      "shape": "rounded_rectangle",
+      "position": {
+        "x": 360,
+        "y": 240
+      },
+      "size": {
+        "width": 200,
+        "height": 90
+      },
+      "style": {
+        "fill": "#dcfce7",
+        "stroke": "#166534",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "auth",
+      "name": "Auth Service",
+      "notes": "Issues and verifies tokens / sessions for the [[api]].",
+      "shape": "rectangle",
+      "position": {
+        "x": 660,
+        "y": 70
+      },
+      "size": {
+        "width": 190,
+        "height": 86
+      },
+      "style": {
+        "fill": "#ede9fe",
+        "stroke": "#6d28d9",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "cache",
+      "name": "Cache",
+      "notes": "In-memory cache such as Redis for hot reads and rate limiting.",
+      "shape": "ellipse",
+      "position": {
+        "x": 660,
+        "y": 200
+      },
+      "size": {
+        "width": 180,
+        "height": 96
+      },
+      "style": {
+        "fill": "#fef3c7",
+        "stroke": "#92400e",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "database",
+      "name": "Database",
+      "notes": "Primary store of record, for example PostgreSQL.",
+      "shape": "rectangle",
+      "position": {
+        "x": 660,
+        "y": 350
+      },
+      "size": {
+        "width": 190,
+        "height": 86
+      },
+      "style": {
+        "fill": "#cffafe",
+        "stroke": "#0e7490",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "queue",
+      "name": "Job Queue",
+      "notes": "Background work: sending email, generating exports, scheduled tasks.",
+      "shape": "note",
+      "position": {
+        "x": 960,
+        "y": 210
+      },
+      "size": {
+        "width": 200,
+        "height": 110
+      },
+      "style": {
+        "fill": "#fee2e2",
+        "stroke": "#991b1b",
+        "text": "#17202a"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "browser_to_cdn",
+      "source": "browser",
+      "target": "cdn",
+      "name": "loads assets",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "browser_to_api",
+      "source": "browser",
+      "target": "api",
+      "name": "API calls",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "api_to_auth",
+      "source": "api",
+      "target": "auth",
+      "name": "verify token",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "api_to_cache",
+      "source": "api",
+      "target": "cache",
+      "name": "read / write",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "api_to_database",
+      "source": "api",
+      "target": "database",
+      "name": "queries",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "api_to_queue",
+      "source": "api",
+      "target": "queue",
+      "name": "enqueue jobs",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    }
+  ],
+  "meta_links": [
+    {
+      "source_node_id": "browser",
+      "source_edge_id": null,
+      "target_node_id": "api",
+      "matched_text": "api",
+      "source_field": "notes",
+      "link_type": "explicit"
+    },
+    {
+      "source_node_id": "browser",
+      "source_edge_id": null,
+      "target_node_id": "api",
+      "matched_text": "api",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "api",
+      "source_edge_id": null,
+      "target_node_id": "auth",
+      "matched_text": "auth",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "api",
+      "source_edge_id": null,
+      "target_node_id": "auth",
+      "matched_text": "auth service",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "api",
+      "source_edge_id": null,
+      "target_node_id": "cache",
+      "matched_text": "cache",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "api",
+      "source_edge_id": null,
+      "target_node_id": "database",
+      "matched_text": "database",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "auth",
+      "source_edge_id": null,
+      "target_node_id": "api",
+      "matched_text": "api",
+      "source_field": "notes",
+      "link_type": "explicit"
+    },
+    {
+      "source_node_id": "auth",
+      "source_edge_id": null,
+      "target_node_id": "api",
+      "matched_text": "api",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": null,
+      "source_edge_id": "browser_to_api",
+      "target_node_id": "api",
+      "matched_text": "API",
+      "source_field": "edge_name",
+      "link_type": "auto"
+    }
+  ],
+  "created_at": "2026-06-06T20:25:33.739Z",
+  "updated_at": "2026-06-06T20:25:33.739Z"
+}

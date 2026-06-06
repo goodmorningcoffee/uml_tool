@@ -1,0 +1,298 @@
+{
+  "diagram_schema": "uml_tool_diagram_v1",
+  "id": "ecommerce_domain_model",
+  "title": "E-commerce Domain Model",
+  "description": "Example class/entity diagram: core entities of an online store and how they relate.",
+  "canvas": {
+    "grid_size": 20
+  },
+  "nodes": [
+    {
+      "id": "customer",
+      "name": "Customer",
+      "notes": "Fields: id, name, email. A customer places [[order]]s.",
+      "shape": "rectangle",
+      "position": {
+        "x": 100,
+        "y": 130
+      },
+      "size": {
+        "width": 200,
+        "height": 92
+      },
+      "style": {
+        "fill": "#e0f2fe",
+        "stroke": "#075985",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "order",
+      "name": "Order",
+      "notes": "Fields: id, status, total. Belongs to a [[customer]] and has many [[order_item]]s.",
+      "shape": "rectangle",
+      "position": {
+        "x": 430,
+        "y": 130
+      },
+      "size": {
+        "width": 210,
+        "height": 92
+      },
+      "style": {
+        "fill": "#dcfce7",
+        "stroke": "#166534",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "order_item",
+      "name": "OrderItem",
+      "notes": "Fields: quantity, unit_price. Links one [[order]] line to one [[product]].",
+      "shape": "rectangle",
+      "position": {
+        "x": 760,
+        "y": 130
+      },
+      "size": {
+        "width": 210,
+        "height": 92
+      },
+      "style": {
+        "fill": "#f1f5f9",
+        "stroke": "#334155",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "product",
+      "name": "Product",
+      "notes": "Fields: id, name, price, sku.",
+      "shape": "rectangle",
+      "position": {
+        "x": 1090,
+        "y": 130
+      },
+      "size": {
+        "width": 200,
+        "height": 92
+      },
+      "style": {
+        "fill": "#ede9fe",
+        "stroke": "#6d28d9",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "category",
+      "name": "Category",
+      "notes": "Groups [[product]]s into a browsable hierarchy.",
+      "shape": "ellipse",
+      "position": {
+        "x": 1090,
+        "y": 320
+      },
+      "size": {
+        "width": 200,
+        "height": 96
+      },
+      "style": {
+        "fill": "#fef3c7",
+        "stroke": "#92400e",
+        "text": "#17202a"
+      }
+    },
+    {
+      "id": "payment",
+      "name": "Payment",
+      "notes": "Fields: amount, method, status. Settles an [[order]].",
+      "shape": "rectangle",
+      "position": {
+        "x": 430,
+        "y": 320
+      },
+      "size": {
+        "width": 210,
+        "height": 92
+      },
+      "style": {
+        "fill": "#cffafe",
+        "stroke": "#0e7490",
+        "text": "#17202a"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "customer_to_order",
+      "source": "customer",
+      "target": "order",
+      "name": "places  1..*",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "order_to_item",
+      "source": "order",
+      "target": "order_item",
+      "name": "contains  1..*",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "item_to_product",
+      "source": "order_item",
+      "target": "product",
+      "name": "refers to  *..1",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "product_to_category",
+      "source": "product",
+      "target": "category",
+      "name": "in  0..*",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    },
+    {
+      "id": "order_to_payment",
+      "source": "order",
+      "target": "payment",
+      "name": "paid by  1..1",
+      "notes": "",
+      "directed": true,
+      "style": {
+        "stroke": "#64748b"
+      }
+    }
+  ],
+  "meta_links": [
+    {
+      "source_node_id": "customer",
+      "source_edge_id": null,
+      "target_node_id": "order",
+      "matched_text": "order",
+      "source_field": "notes",
+      "link_type": "explicit"
+    },
+    {
+      "source_node_id": "customer",
+      "source_edge_id": null,
+      "target_node_id": "order",
+      "matched_text": "order",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "order",
+      "source_edge_id": null,
+      "target_node_id": "customer",
+      "matched_text": "customer",
+      "source_field": "notes",
+      "link_type": "explicit"
+    },
+    {
+      "source_node_id": "order",
+      "source_edge_id": null,
+      "target_node_id": "order_item",
+      "matched_text": "order_item",
+      "source_field": "notes",
+      "link_type": "explicit"
+    },
+    {
+      "source_node_id": "order",
+      "source_edge_id": null,
+      "target_node_id": "customer",
+      "matched_text": "customer",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "order",
+      "source_edge_id": null,
+      "target_node_id": "order_item",
+      "matched_text": "order_item",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "order_item",
+      "source_edge_id": null,
+      "target_node_id": "order",
+      "matched_text": "order",
+      "source_field": "notes",
+      "link_type": "explicit"
+    },
+    {
+      "source_node_id": "order_item",
+      "source_edge_id": null,
+      "target_node_id": "product",
+      "matched_text": "product",
+      "source_field": "notes",
+      "link_type": "explicit"
+    },
+    {
+      "source_node_id": "order_item",
+      "source_edge_id": null,
+      "target_node_id": "order",
+      "matched_text": "order",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "order_item",
+      "source_edge_id": null,
+      "target_node_id": "product",
+      "matched_text": "product",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "category",
+      "source_edge_id": null,
+      "target_node_id": "product",
+      "matched_text": "product",
+      "source_field": "notes",
+      "link_type": "explicit"
+    },
+    {
+      "source_node_id": "category",
+      "source_edge_id": null,
+      "target_node_id": "product",
+      "matched_text": "product",
+      "source_field": "notes",
+      "link_type": "auto"
+    },
+    {
+      "source_node_id": "payment",
+      "source_edge_id": null,
+      "target_node_id": "order",
+      "matched_text": "order",
+      "source_field": "notes",
+      "link_type": "explicit"
+    },
+    {
+      "source_node_id": "payment",
+      "source_edge_id": null,
+      "target_node_id": "order",
+      "matched_text": "order",
+      "source_field": "notes",
+      "link_type": "auto"
+    }
+  ],
+  "created_at": "2026-06-06T20:25:33.757Z",
+  "updated_at": "2026-06-06T20:25:33.757Z"
+}

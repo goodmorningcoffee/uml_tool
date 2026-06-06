@@ -1,0 +1,10 @@
+services:
+  uml_tool:
+    build: .
+    ports:
+      - "${UML_TOOL_PORT:-8790}:8789"
+    environment:
+      PORT: 8789
+      DATA_DIR: /app/data
+    volumes:
+      - ./data:/app/data

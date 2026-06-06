@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1356" height="620" viewBox="0 0 1356 620" role="img" aria-label="UML Tool — How It Works">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b" />
+    </marker>
+    <style>
+      .title { font: 700 18px system-ui, -apple-system, Segoe UI, sans-serif; fill: #17202a; }
+      .node-label { font: 600 13px system-ui, -apple-system, Segoe UI, sans-serif; fill: #17202a; }
+      .edge-label { font: 12px system-ui, -apple-system, Segoe UI, sans-serif; fill: #334155; paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
+      .edge { stroke-width: 1.8px; stroke-linecap: round; }
+      .meta { font: 11px system-ui, -apple-system, Segoe UI, sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="#f8fafc" />
+  <text class="title" x="18" y="30">UML Tool — How It Works</text>
+  <g><line class="edge" x1="158" y1="185.5" x2="508" y2="185.5" stroke="#64748b" marker-end="url(#arrow)"><title>save / load</title></line><text class="edge-label" x="333" y="177.5" text-anchor="middle">save / load</text>
+<line class="edge" x1="158" y1="395.5" x2="853" y2="98" stroke="#64748b" marker-end="url(#arrow)"><title>meta layer</title></line><text class="edge-label" x="505.5" y="238.75" text-anchor="middle">meta layer</text>
+<line class="edge" x1="508" y1="185.5" x2="853" y2="98" stroke="#64748b" marker-end="url(#arrow)"><title>write source</title></line><text class="edge-label" x="680.5" y="133.75" text-anchor="middle">write source</text>
+<line class="edge" x1="853" y1="98" x2="1193" y2="203" stroke="#64748b" marker-end="url(#arrow)"><title>inspect</title></line><text class="edge-label" x="1023" y="142.5" text-anchor="middle">inspect</text>
+<line class="edge" x1="1193" y1="203" x2="508" y2="185.5" stroke="#64748b" marker-end="url(#arrow)"><title>structured edits</title></line><text class="edge-label" x="850.5" y="186.25" text-anchor="middle">structured edits</text>
+<line class="edge" x1="508" y1="185.5" x2="848" y2="323" stroke="#64748b" marker-end="url(#arrow)"><title>broadcast</title></line><text class="edge-label" x="678" y="246.25" text-anchor="middle">broadcast</text>
+<line class="edge" x1="848" y1="323" x2="158" y2="185.5" stroke="#64748b" marker-end="url(#arrow)"><title>live refresh</title></line><text class="edge-label" x="503" y="246.25" text-anchor="middle">live refresh</text></g>
+  <g><g><rect x="48" y="138" width="220" height="95" rx="10" fill="#e0f2fe" stroke="#075985" stroke-width="2"><title>React Flow canvas: drag nodes, draw edges, snap to grid, and edit names and [[node_notes]] in the inspector.</title></rect><text class="node-label" x="158" y="189.5" text-anchor="middle">Browser GUI</text><circle cx="255" cy="151" r="7" fill="#fef3c7" stroke="#d97706" /><text x="255" y="155" text-anchor="middle" font-size="10" fill="#92400e">i</text></g>
+<g><polygon points="48,338 244,338 268,362 268,453 48,453" fill="#fef3c7" stroke="#92400e" stroke-width="2"><title>Details live in notes, not crammed into the shape. Notes can reference other nodes with [[meta_links]].</title></polygon><polyline points="244,338 244,362 268,362" fill="none" stroke="#92400e" stroke-width="1.4" /><text class="node-label" x="158" y="399.5" text-anchor="middle">Node Notes</text><circle cx="255" cy="351" r="7" fill="#fef3c7" stroke="#d97706" /><text x="255" y="355" text-anchor="middle" font-size="10" fill="#92400e">i</text></g>
+<g><rect x="398" y="138" width="220" height="95" rx="0" fill="#dcfce7" stroke="#166534" stroke-width="2"><title>Filesystem CRUD for diagrams plus SVG export. The diagram JSON is the source of truth.</title></rect><text class="node-label" x="508" y="189.5" text-anchor="middle">Express API</text><circle cx="605" cy="151" r="7" fill="#fef3c7" stroke="#d97706" /><text x="605" y="155" text-anchor="middle" font-size="10" fill="#92400e">i</text></g>
+<g><rect x="738" y="48" width="230" height="100" rx="10" fill="#cffafe" stroke="#0e7490" stroke-width="2"><title>Agent-readable: nodes, positions, shapes, notes, visible edges, and meta_links.</title></rect><text class="node-label" x="853" y="102" text-anchor="middle">Diagram JSON</text><circle cx="955" cy="61" r="7" fill="#fef3c7" stroke="#d97706" /><text x="955" y="65" text-anchor="middle" font-size="10" fill="#92400e">i</text></g>
+<g><ellipse cx="848" cy="323" rx="110" ry="55" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"><title>Server-Sent Events push agent edits to the open browser, so you watch changes land in real time.</title></ellipse><text class="node-label" x="848" y="327" text-anchor="middle">Live Bridge (SSE)</text><circle cx="945" cy="281" r="7" fill="#fef3c7" stroke="#d97706" /><text x="945" y="285" text-anchor="middle" font-size="10" fill="#92400e">i</text></g>
+<g><ellipse cx="1193" cy="203" rx="115" ry="55" fill="#fee2e2" stroke="#991b1b" stroke-width="2"><title>An AI coding agent (Claude, Codex, etc.) running in your repo reads the current chart and applies structured edits through the agent API.</title></ellipse><text class="node-label" x="1193" y="207" text-anchor="middle">AI Agent</text><circle cx="1295" cy="161" r="7" fill="#fef3c7" stroke="#d97706" /><text x="1295" y="165" text-anchor="middle" font-size="10" fill="#92400e">i</text></g></g>
+  <text class="meta" x="18" y="602">3 meta link(s) in notes</text>
+</svg>

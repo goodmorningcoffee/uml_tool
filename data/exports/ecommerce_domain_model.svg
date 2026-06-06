@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1286" height="620" viewBox="0 0 1286 620" role="img" aria-label="E-commerce Domain Model">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b" />
+    </marker>
+    <style>
+      .title { font: 700 18px system-ui, -apple-system, Segoe UI, sans-serif; fill: #17202a; }
+      .node-label { font: 600 13px system-ui, -apple-system, Segoe UI, sans-serif; fill: #17202a; }
+      .edge-label { font: 12px system-ui, -apple-system, Segoe UI, sans-serif; fill: #334155; paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
+      .edge { stroke-width: 1.8px; stroke-linecap: round; }
+      .meta { font: 11px system-ui, -apple-system, Segoe UI, sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="#f8fafc" />
+  <text class="title" x="18" y="30">E-commerce Domain Model</text>
+  <g><line class="edge" x1="148" y1="94" x2="483" y2="94" stroke="#64748b" marker-end="url(#arrow)"><title>places  1..*</title></line><text class="edge-label" x="315.5" y="86" text-anchor="middle">places  1..*</text>
+<line class="edge" x1="483" y1="94" x2="813" y2="94" stroke="#64748b" marker-end="url(#arrow)"><title>contains  1..*</title></line><text class="edge-label" x="648" y="86" text-anchor="middle">contains  1..*</text>
+<line class="edge" x1="813" y1="94" x2="1138" y2="94" stroke="#64748b" marker-end="url(#arrow)"><title>refers to  *..1</title></line><text class="edge-label" x="975.5" y="86" text-anchor="middle">refers to  *..1</text>
+<line class="edge" x1="1138" y1="94" x2="1138" y2="286" stroke="#64748b" marker-end="url(#arrow)"><title>in  0..*</title></line><text class="edge-label" x="1138" y="182" text-anchor="middle">in  0..*</text>
+<line class="edge" x1="483" y1="94" x2="483" y2="284" stroke="#64748b" marker-end="url(#arrow)"><title>paid by  1..1</title></line><text class="edge-label" x="483" y="181" text-anchor="middle">paid by  1..1</text></g>
+  <g><g><rect x="48" y="48" width="200" height="92" rx="0" fill="#e0f2fe" stroke="#075985" stroke-width="2"><title>Fields: id, name, email. A customer places [[order]]s.</title></rect><text class="node-label" x="148" y="98" text-anchor="middle">Customer</text><circle cx="235" cy="61" r="7" fill="#fef3c7" stroke="#d97706" /><text x="235" y="65" text-anchor="middle" font-size="10" fill="#92400e">i</text></g>
+<g><rect x="378" y="48" width="210" height="92" rx="0" fill="#dcfce7" stroke="#166534" stroke-width="2"><title>Fields: id, status, total. Belongs to a [[customer]] and has many [[order_item]]s.</title></rect><text class="node-label" x="483" y="98" text-anchor="middle">Order</text><circle cx="575" cy="61" r="7" fill="#fef3c7" stroke="#d97706" /><text x="575" y="65" text-anchor="middle" font-size="10" fill="#92400e">i</text></g>
+<g><rect x="708" y="48" width="210" height="92" rx="0" fill="#f1f5f9" stroke="#334155" stroke-width="2"><title>Fields: quantity, unit_price. Links one [[order]] line to one [[product]].</title></rect><text class="node-label" x="813" y="98" text-anchor="middle">OrderItem</text><circle cx="905" cy="61" r="7" fill="#fef3c7" stroke="#d97706" /><text x="905" y="65" text-anchor="middle" font-size="10" fill="#92400e">i</text></g>
+<g><rect x="1038" y="48" width="200" height="92" rx="0" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"><title>Fields: id, name, price, sku.</title></rect><text class="node-label" x="1138" y="98" text-anchor="middle">Product</text><circle cx="1225" cy="61" r="7" fill="#fef3c7" stroke="#d97706" /><text x="1225" y="65" text-anchor="middle" font-size="10" fill="#92400e">i</text></g>
+<g><ellipse cx="1138" cy="286" rx="100" ry="48" fill="#fef3c7" stroke="#92400e" stroke-width="2"><title>Groups [[product]]s into a browsable hierarchy.</title></ellipse><text class="node-label" x="1138" y="290" text-anchor="middle">Category</text><circle cx="1225" cy="251" r="7" fill="#fef3c7" stroke="#d97706" /><text x="1225" y="255" text-anchor="middle" font-size="10" fill="#92400e">i</text></g>
+<g><rect x="378" y="238" width="210" height="92" rx="0" fill="#cffafe" stroke="#0e7490" stroke-width="2"><title>Fields: amount, method, status. Settles an [[order]].</title></rect><text class="node-label" x="483" y="288" text-anchor="middle">Payment</text><circle cx="575" cy="251" r="7" fill="#fef3c7" stroke="#d97706" /><text x="575" y="255" text-anchor="middle" font-size="10" fill="#92400e">i</text></g></g>
+  <text class="meta" x="18" y="602">14 meta link(s) in notes</text>
+</svg>

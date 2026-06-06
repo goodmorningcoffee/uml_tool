@@ -1,0 +1,29 @@
+node_modules/
+dist/
+.DS_Store
+npm-debug.log*
+
+# Local diagram data and runtime artifacts are NOT shipped.
+# Your own saved diagrams, exports, operation logs, and session state stay
+# on your machine and out of git.
+data/diagrams/*
+data/exports/*
+data/operations/*
+data/session/*
+
+# ...except the generic example diagrams (+ their SVG snapshots) and the
+# empty-directory placeholders, so a fresh clone shows demos, not an empty app.
+!data/diagrams/web_app_architecture.json
+!data/diagrams/user_onboarding_flow.json
+!data/diagrams/ecommerce_domain_model.json
+!data/diagrams/uml_tool_overview.json
+!data/exports/web_app_architecture.svg
+!data/exports/user_onboarding_flow.svg
+!data/exports/ecommerce_domain_model.svg
+!data/exports/uml_tool_overview.svg
+!data/exports/.gitkeep
+!data/operations/.gitkeep
+!data/session/.gitkeep
+
+# Internal dev validation notes (kept locally, not published)
+FINAL_VALIDATIONS_USER_HAS_TO_RUN.md
