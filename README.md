@@ -3,9 +3,13 @@
 A portable, browser-based UML / co-design diagramming tool — system maps,
 workflow charts, class/entity models, taxonomies, and design-intent diagrams.
 
-It's intentionally smaller and simpler than draw.io. The point isn't to be a
-full diagram suite; it's to be a **shared co-design surface for a human and an
-AI agent**. You drop `uml_tool` into whatever repo you're working in, run it
+Made this to give agents and myself another way of communicating outside of the Chat.  
+It's interesting to ask the agent to make a chart based off their ideas, and see how they structure their ideas spatially.
+
+It's intentionally smaller and simpler than draw.io (the GOAT).  
+The point isn't to be a full diagram suite; it's to be 
+a **shared co-design surface for a human and an AI agent**. 
+You drop `uml_tool` into whatever repo you're working in, run it
 locally, and draw. Your AI coding agent (Claude, Codex, etc.) — running in that
 same repo — can then *read* the exact chart you see as structured JSON, and
 *edit* it through a small operations API. Edits the agent makes stream back into
